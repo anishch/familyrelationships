@@ -7,6 +7,7 @@ public class Person {
     private Person father;
     private ArrayList<Person> kids;
 
+
     public Person (String str){
         this.name = str;
     }
