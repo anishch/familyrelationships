@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class FamilyMain {
 
-    static int temp = 0;
-    static int count = 0;
+    static int temp = 1;
 
     public static void main(String[] args) throws IOException {
         System.out.println("This program will show you all of the ancestors and descendants of a person.");
@@ -32,12 +31,12 @@ public class FamilyMain {
             if (persons.getName().equalsIgnoreCase(person)) {
                 persona = persons;
                 System.out.println("Ancestors: ");
-                System.out.println(persons.getName());
+                System.out.println("   " + persons.getName());
                 for (Person thingies : returnlist(persona.parents, "ancestors")){
                     //System.out.println(thingies.getName());
                 }
                 System.out.println("Descendants: ");
-                System.out.println(persons.getName());
+                System.out.println("   " + persons.getName());
                 for (Person thingies : returnlist(persona.kids, "descendants")){
                     //System.out.println(thingies.getName());
                 }
