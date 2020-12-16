@@ -4,7 +4,7 @@
 import java.util.*;
 
 public class FamilyInfo {
-    private ArrayList<Person> people;
+    public ArrayList<Person> people;
 
     private final String LIST_END = "END";  // signals end of list
 
@@ -13,8 +13,8 @@ public class FamilyInfo {
         people = new ArrayList<Person>();
     }
 
-    // post: returns the position of a name in the list of people, 
-    //       -1 if not found
+    // post: returns the position of a name in the list of people,
+    //    //       -1 if not found
     private int indexOf(String name) {
         for(int i = 0; i < people.size(); i++) {
             if (people.get(i).getName().equalsIgnoreCase(name)) {

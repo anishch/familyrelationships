@@ -5,11 +5,12 @@ public class Person {
     private String name;
     private Person mother;
     private Person father;
-    private ArrayList<Person> kids;
+    public ArrayList<Person> kids;
 
 
     public Person (String str){
         this.name = str;
+        kids = new ArrayList<Person>();
     }
 
     public String getName(){
