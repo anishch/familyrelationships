@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class FamilyMain {
 
+    static int temp = 0;
+    static int count = 0;
+
     public static void main(String[] args) throws IOException {
         System.out.println("This program will show you all of the ancestors and descendants of a person.");
         System.out.print("What is the input file?");
@@ -31,7 +34,7 @@ public class FamilyMain {
             if (persons.getName().equalsIgnoreCase(person)) {
                 persona = persons;
                 for (Person thingies : returnlist(persona.kids)){
-                    System.out.println(thingies.getName());
+                    //System.out.println(thingies.getName());
                 }
                 //System.out.println(returnlist(persona.kids));
             }
@@ -39,10 +42,27 @@ public class FamilyMain {
     }
 
     public static ArrayList<Person> returnlist (ArrayList<Person> list){
-        for (Person persons : list){
-            returnlist(persons.kids);
+        temp++;
+        /*if (list.size() != 0){
+            temp++;
         }
-        System.out.println(makeReadableList(list));
+        else{
+            //temp--;
+        }*/
+        //System.out.println(makeReadableList(list));
+        /*for (int k = 0; k < temp; k++){
+            System.out.print("    ");
+        }*/
+        for (Person persons : list){ //Henry VII,
+            for (int k = 0; k < temp; k++){
+                System.out.print("    ");
+            }
+            System.out.println(persons.getName());
+            returnlist(persons.kids); //
+
+        }
+        //System.out.println(makeReadableList(list));
+        temp--;
         return list;
     }
 
