@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FamilyMain {
 
-
+    // we start one indent in when printing first name
     static int numberOfIndents = 1;
 
     public static void main(String[] args) throws IOException {
@@ -39,46 +39,47 @@ public class FamilyMain {
         // read the file and use the read method from familyinfo
         familyinfo.read(fileReader);
 
-        Person persona;
         for (Person persons : familyinfo.people) {
             // if person in our arraylist equals name of inputted person,
             // then print out their ancestors and descendants
             if (persons.getName().equalsIgnoreCase(person)) {
-                persona = persons;
                 System.out.println("Ancestors: \n   " + persons.getName());
-                returnlist(persona.parents, "ancestors");
+                returnList(persons.parents, "ancestors");
                 System.out.println("Descendants: \n   " + persons.getName());
-                returnlist(persona.kids, "descendants");
+                returnList(persons.kids, "descendants");
+                // print out ancestors and descendants using returnList method
             }
         }
     }
 
-    public static void returnlist (ArrayList<Person> list, String type){
+    public static void returnList(ArrayList<Person> list, String type) {
+        // as we will print out another set of kids/parents, we need to indent
         numberOfIndents++;
-        for (Person persons : list){ //Henry VII,
-            for (int k = 0; k < numberOfIndents; k++){
+        
+        /*
+        list is the inputted list of the person's kids/parents
+        so we print out the number of indents that are necessary
+        then we print the parent/kids name (depending on which we
+        need to given type input). Then we print out the parents/kids
+        of the parent/kid to have a full proper list printed out
+         */
+        for (Person persons : list) {
+            for (int k = 0; k < numberOfIndents; k++) {
                 System.out.print("    ");
             }
             System.out.println(persons.getName());
-            if (type.equals("descendants")){
-                returnlist(persons.kids, "descendants"); //
+            if (type.equals("descendants")) {
+                returnList(persons.kids, "descendants"); //
             }
-            if (type.equals("ancestors")){
-                returnlist(persons.parents, "ancestors"); //
+            if (type.equals("ancestors")) {
+                returnList(persons.parents, "ancestors"); //
             }
         }
+
+        // go back to the previous number of indents
         numberOfIndents--;
     }
-
-    public static ArrayList<String> makeReadableList (ArrayList<Person> list){
-        ArrayList<String> strlist = new ArrayList<String>();
-        for (Person personies : list){
-            strlist.add(personies.getName());
-        }
-        return strlist;
-    }
 }
-
 
 
 
