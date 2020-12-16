@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,18 +43,18 @@ public class FamilyMain {
             // then print out their ancestors and descendants
             if (persons.getName().equalsIgnoreCase(person)) {
                 System.out.println("Ancestors: \n   " + persons.getName());
-                returnList(persons.parents, "ancestors");
+                printPersons(persons.parents, "ancestors");
                 System.out.println("Descendants: \n   " + persons.getName());
-                returnList(persons.kids, "descendants");
-                // print out ancestors and descendants using returnList method
+                printPersons(persons.kids, "descendants");
+                // print out ancestors and descendants using printPersons method
             }
         }
     }
 
-    public static void returnList(ArrayList<Person> list, String type) {
+    public static void printPersons(ArrayList<Person> list, String type) {
         // as we will print out another set of kids/parents, we need to indent
         numberOfIndents++;
-        
+
         /*
         list is the inputted list of the person's kids/parents
         so we print out the number of indents that are necessary
@@ -69,10 +68,10 @@ public class FamilyMain {
             }
             System.out.println(persons.getName());
             if (type.equals("descendants")) {
-                returnList(persons.kids, "descendants"); //
+                printPersons(persons.kids, "descendants"); //
             }
             if (type.equals("ancestors")) {
-                returnList(persons.parents, "ancestors"); //
+                printPersons(persons.parents, "ancestors"); //
             }
         }
 
