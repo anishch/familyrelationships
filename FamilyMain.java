@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class FamilyMain {
 
-    static int temp = 1;
+
+    static int numberOfIndents = 1;
 
     public static void main(String[] args) throws IOException {
         System.out.println("This program will show you all of the ancestors and descendants of a person.");
@@ -46,9 +47,9 @@ public class FamilyMain {
     }
 
     public static ArrayList<Person> returnlist (ArrayList<Person> list, String type){
-        temp++;
+        numberOfIndents++;
         for (Person persons : list){ //Henry VII,
-            for (int k = 0; k < temp; k++){
+            for (int k = 0; k < numberOfIndents; k++){
                 System.out.print("    ");
             }
             System.out.println(persons.getName());
@@ -59,7 +60,7 @@ public class FamilyMain {
                 returnlist(persons.parents, "ancestors"); //
             }
         }
-        temp--;
+        numberOfIndents--;
         return list;
     }
 
