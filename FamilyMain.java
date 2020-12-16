@@ -26,14 +26,19 @@ public class FamilyMain {
         Scanner fileReader = new Scanner(file);
         FamilyInfo familyinfo = new FamilyInfo();
         familyinfo.read(fileReader);
-        System.out.println("Ancestors: ");
 
-        System.out.println("Descendants: ");
         Person persona;
         for (Person persons : familyinfo.people) {
             if (persons.getName().equalsIgnoreCase(person)) {
                 persona = persons;
-                for (Person thingies : returnlist(persona.kids)){
+                System.out.println("Ancestors: ");
+                System.out.println(persons.getName());
+                for (Person thingies : returnlist(persona.parents, "ancestors")){
+                    //System.out.println(thingies.getName());
+                }
+                System.out.println("Descendants: ");
+                System.out.println(persons.getName());
+                for (Person thingies : returnlist(persona.kids, "descendants")){
                     //System.out.println(thingies.getName());
                 }
                 //System.out.println(returnlist(persona.kids));
@@ -41,15 +46,19 @@ public class FamilyMain {
         }
     }
 
-    public static ArrayList<Person> returnlist (ArrayList<Person> list){
+    public static ArrayList<Person> returnlist (ArrayList<Person> list, String type){
         temp++;
         for (Person persons : list){ //Henry VII,
             for (int k = 0; k < temp; k++){
                 System.out.print("    ");
             }
             System.out.println(persons.getName());
-            returnlist(persons.kids); //
-
+            if (type.equals("descendants")){
+                returnlist(persons.kids, "descendants"); //
+            }
+            if (type.equals("ancestors")){
+                returnlist(persons.parents, "ancestors"); //
+            }
         }
         temp--;
         return list;
