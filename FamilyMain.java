@@ -45,11 +45,9 @@ public class FamilyMain {
             // then print out their ancestors and descendants
             if (persons.getName().equalsIgnoreCase(person)) {
                 persona = persons;
-                System.out.println("Ancestors: ");
-                System.out.println("   " + persons.getName());
+                System.out.println("Ancestors: \n   " + persons.getName());
                 returnlist(persona.parents, "ancestors");
-                System.out.println("Descendants: ");
-                System.out.println("   " + persons.getName());
+                System.out.println("Descendants: \n   " + persons.getName());
                 returnlist(persona.kids, "descendants");
             }
         }
