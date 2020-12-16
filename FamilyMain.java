@@ -43,16 +43,6 @@ public class FamilyMain {
 
     public static ArrayList<Person> returnlist (ArrayList<Person> list){
         temp++;
-        /*if (list.size() != 0){
-            temp++;
-        }
-        else{
-            //temp--;
-        }*/
-        //System.out.println(makeReadableList(list));
-        /*for (int k = 0; k < temp; k++){
-            System.out.print("    ");
-        }*/
         for (Person persons : list){ //Henry VII,
             for (int k = 0; k < temp; k++){
                 System.out.print("    ");
@@ -61,7 +51,6 @@ public class FamilyMain {
             returnlist(persons.kids); //
 
         }
-        //System.out.println(makeReadableList(list));
         temp--;
         return list;
     }
