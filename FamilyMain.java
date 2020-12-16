@@ -68,10 +68,10 @@ public class FamilyMain {
             }
             System.out.println(persons.getName());
             if (type.equals("descendants")) {
-                printPersons(persons.kids, "descendants"); //
+                printPersons(persons.kids, "descendants");
             }
             if (type.equals("ancestors")) {
-                printPersons(persons.parents, "ancestors"); //
+                printPersons(persons.parents, "ancestors");
             }
         }
 
